@@ -1,0 +1,16 @@
+name: wearables
+channels:
+  - defaults
+dependencies:
+  - python=3.10
+  - pip
+  - pip:
+    - pandas
+    - numpy
+    - tqdm
+    - openpyxl
+    - scikit-learn
+    - matplotlib
+    - seaborn
+    - tabpfn
+    - -e .

@@ -31,8 +31,11 @@ df_outcome = df_outcome[~df_outcome['Patient_ID'].duplicated(keep='first')].rese
 df_steps = df_steps[~df_steps.index.duplicated(keep='first')]
 
 # Normalize Steps (100%)
-max_steps = df_steps.max(axis=1)
-df_steps  = df_steps.div(max_steps, axis=0)*100
+df_steps_pre = df_steps[df_steps.columns[df_steps.columns<0]]
+lower = df_steps.min(axis=1).values[:, None]
+upper = df_steps_pre.quantile(0.975, axis=1).values[:, None]
+df_steps = df_steps.clip(lower=lower, upper=upper, axis=1)  
+df_steps  = (df_steps-lower)/(upper-lower)*100
 
 # Long format 
 df_steps_long = df_steps.reset_index().melt(id_vars='index', var_name='day', value_name='steps')
