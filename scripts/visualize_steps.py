@@ -13,10 +13,10 @@ path_out = Path('results/')
 path_out.mkdir(exist_ok=True)
 
 # ------------- Read Data ------------
-df_lower_outcome = pd.read_excel('data/dataset_27_01_2025/Lower_Extremity_Patient_Outcomes.xlsx') 
-df_upper_outcome = pd.read_excel('data/dataset_27_01_2025/Upper_Extremity_Patient_Outcomes.xlsx') 
-df_lower_steps = pd.read_excel('data/dataset_27_01_2025/Lower_Extremity_Step_Count_Data.xlsx').set_index('Days').T 
-df_upper_steps = pd.read_excel('data/dataset_27_01_2025/Upper_Extremity_Step_Count_Data.xlsx').set_index('Days').T
+df_lower_outcome = pd.read_excel('data/Lower_Extremity_Patient_Outcomes.xlsx') 
+df_upper_outcome = pd.read_excel('data/Upper_Extremity_Patient_Outcomes.xlsx') 
+df_lower_steps = pd.read_excel('data/Lower_Extremity_Step_Count_Data.xlsx').set_index('Days').T 
+df_upper_steps = pd.read_excel('data/Upper_Extremity_Step_Count_Data.xlsx').set_index('Days').T
 
 print()
 assert len(df_lower_outcome) == len(df_lower_steps)
